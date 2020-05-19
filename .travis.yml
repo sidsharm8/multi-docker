@@ -5,21 +5,21 @@ services:
 
 
 before_install:
-  - docker build -t siddharth/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t sidsharm8/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true siddharth/react-test npm run test
+  - docker run -e CI=true sidsharm8/react-test npm run test
 
 after_success:
-  - docker build -t siddharth/multi-client ./client
-  - docker build -t siddharth/multi-nginx ./nginx
-  - docker build -t siddharth/multi-server ./server
-  - docker build -t siddharth/multi-worker ./worker
+  - docker build -t sidsharm8/multi-client ./client
+  - docker build -t sidsharm8/multi-nginx ./nginx
+  - docker build -t sidsharm8/multi-server ./server
+  - docker build -t sidsharm8/multi-worker ./worker
   #login in to the docker cli
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #take those images and push them to docker hub
-  - docker push siddharth/multi-client
-  - docker push siddharth/multi-nginx
-  - docker push siddharth/multi-server
-  - docker push siddharth/multi-worker
+  - docker push sidsharm8/multi-client
+  - docker push sidsharm8/multi-nginx
+  - docker push sidsharm8/multi-server
+  - docker push sidsharm8/multi-worker
 
